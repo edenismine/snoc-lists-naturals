@@ -14,7 +14,8 @@ module ListS(
   nthElementS,
   deleteNthElementS,
   addFirstS,
-  addLastS
+  addLastS,
+  reverseS
 ) where
 
 -- |ListS. Snoc list representation. NilS represent the empty list, and Snoc represents the
@@ -76,3 +77,7 @@ addFirstS x (Snoc ys y) = Snoc (addFirstS x ys) y
 addLastS :: a -> ListS a -> ListS a
 addLastS x xs   = Snoc xs x
 
+-- |reverseS. This function reverses a Snoc list.
+reverseS :: ListS a -> ListS a
+reverseS NilS        = NilS
+reverseS (Snoc xs x) = addFirstS x (reverseS xs)
