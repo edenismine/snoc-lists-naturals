@@ -21,4 +21,4 @@ University of Mexico[^1].
 Bibliography
 ------------
 
-[^1]: [Facultad de Ciencias, UNAM.](http://www.fciencias.unam.mx/).
+[^1]: [Facultad de Ciencias, UNAM](http://www.fciencias.unam.mx/).

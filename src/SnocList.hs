@@ -10,7 +10,8 @@ module ListS(
   headS,
   tailS,
   initS,
-  lastS
+  lastS,
+  nthElementS
 ) where
 
 -- |ListS. Snoc list representation. NilS represent the empty list, and Snoc represents the
@@ -44,3 +45,11 @@ lastS :: ListS a -> a
 lastS list = case list of
   NilS       -> error "Empty list"
   (Snoc _ x) -> x
+
+-- |nthElementS. This function retrieves the n-th element of the list.
+nthElementS :: Int -> ListS a -> a
+nthElementS _ NilS = error "Invalid index"
+nthElementS n list
+  | n < 0 = error "Invalid index"
+  | n == 0 = headS list
+  | otherwise = nthElementS (n-1) (tailS list)
