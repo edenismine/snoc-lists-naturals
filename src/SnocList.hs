@@ -1,7 +1,7 @@
 {-|
 Module      : ListS
 Description : Snoc lists representation with a few useful functions built around it.
-License     : Apache License 2.0
+License     : MIT
 Maintainer  : daniel.aragon@ciencias.unam.mx
 -}
 
@@ -9,13 +9,13 @@ module ListS(
   ListS,
   headS,
   tailS,
-  initS
+  initS,
+  lastS
 ) where
 
 -- |Snoc list datatype. NilS represent the empty list, and Snoc represents the operator that
 --  adds an element to the end of a list.
 data ListS a = NilS | Snoc (ListS a) a deriving Show
-
 
 -- |This function retrieves the first element of the list.
 headS :: ListS a -> a
@@ -38,3 +38,9 @@ initS :: ListS a -> ListS a
 initS list = case list of
   NilS           -> error "Empty list"
   (Snoc list' _) -> list'
+
+-- |This function retrieves the last element of the list.
+lastS :: ListS a -> a
+lastS list = case list of
+  NilS       -> error "Empty list"
+  (Snoc _ x) -> x
