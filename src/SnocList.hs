@@ -16,7 +16,7 @@ module ListS(
 data ListS a = NilS | Snoc (ListS a) a deriving Show
 
 
--- |This function retrieves the the first element of the list.
+-- |This function retrieves the first element of the list.
 headS :: ListS a -> a
 headS list = case list of
   NilS -> error "Empty List"
@@ -24,6 +24,7 @@ headS list = case list of
     NilS -> x
     _    -> headS list'
 
+-- |This function retrieves the list without the first element.
 tailS :: ListS a -> ListS a
 tailS list = case list of
   NilS -> error "Empty List"
