@@ -1,7 +1,8 @@
 {-|
 Module      : ListS
-Description : Snoc lists representation with a few useful functions built around it.
+Description : Snoc lists representation with a few useful functions built around it
 License     : MIT
+Author      : Luis Daniel Aragon Bermudez
 Maintainer  : daniel.aragon@ciencias.unam.mx
 -}
 
