@@ -13,11 +13,11 @@ module ListS(
   lastS
 ) where
 
--- |Snoc list datatype. NilS represent the empty list, and Snoc represents the operator that
---  adds an element to the end of a list.
+-- |ListS. Snoc list representation. NilS represent the empty list, and Snoc represents the
+--  operator that adds an element to the end of a list.
 data ListS a = NilS | Snoc (ListS a) a deriving Show
 
--- |This function retrieves the first element of the list.
+-- |headS. This function retrieves the first element of the list.
 headS :: ListS a -> a
 headS list = case list of
   NilS -> error "Empty list"
@@ -25,7 +25,7 @@ headS list = case list of
     NilS -> x
     _    -> headS list'
 
--- |This function retrieves the list without the first element.
+-- |tailS. This function retrieves the list without the first element.
 tailS :: ListS a -> ListS a
 tailS list = case list of
   NilS -> error "Empty list"
@@ -33,13 +33,13 @@ tailS list = case list of
     NilS -> NilS
     _    -> Snoc (tailS list') x
 
--- |This function retrieves the list without the last element.
+-- |initS. This function retrieves the list without the last element.
 initS :: ListS a -> ListS a
 initS list = case list of
   NilS           -> error "Empty list"
   (Snoc list' _) -> list'
 
--- |This function retrieves the last element of the list.
+-- |lastS. This function retrieves the last element of the list.
 lastS :: ListS a -> a
 lastS list = case list of
   NilS       -> error "Empty list"
