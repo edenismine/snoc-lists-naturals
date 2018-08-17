@@ -13,7 +13,8 @@ module ListS(
   lastS,
   nthElementS,
   deleteNthElementS,
-  addFirstS
+  addFirstS,
+  addLastS
 ) where
 
 -- |ListS. Snoc list representation. NilS represent the empty list, and Snoc represents the
@@ -64,8 +65,14 @@ deleteNthElementS n list
   | n == 0 = tailS list
   | otherwise = addFirstS (headS list) (deleteNthElementS (n-1) (tailS list))
 
--- |addFirstS. Given an element 'x' and a list 'xs', this function retrieves the list
--- 'x:xs'.
+-- |addFirstS. Given an element 'a' and a list 'x', this function retrieves the list
+-- 'ax'.
 addFirstS :: a -> ListS a -> ListS a
 addFirstS x NilS        = Snoc NilS x
 addFirstS x (Snoc ys y) = Snoc (addFirstS x ys) y
+
+-- |addLastS. Given an element 'a' and a list 'x', this function retrieves the list
+-- 'xa'.
+addLastS :: a -> ListS a -> ListS a
+addLastS x NilS = Snoc NilS x
+addLastS x xs   = Snoc xs x
