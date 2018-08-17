@@ -74,5 +74,5 @@ addFirstS x (Snoc ys y) = Snoc (addFirstS x ys) y
 -- |addLastS. Given an element 'a' and a list 'x', this function retrieves the list
 -- 'xa'.
 addLastS :: a -> ListS a -> ListS a
-addLastS x NilS = Snoc NilS x
 addLastS x xs   = Snoc xs x
+
