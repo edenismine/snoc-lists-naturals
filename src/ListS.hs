@@ -17,7 +17,8 @@ module ListS(
   addFirstS,
   addLastS,
   reverseS,
-  appendS
+  appendS,
+  takeS
 ) where
 
 -- |ListS. Snoc list representation. NilS represent the empty list, and Snoc represents the
@@ -89,3 +90,13 @@ appendS :: ListS a -> ListS a -> ListS a
 appendS l NilS = l
 appendS NilS l = l
 appendS l1 l2  = appendS (Snoc l1 (headS l2)) (tailS l2)
+
+-- |takeS. This function retrieves the list's 'n' first elements.
+takeS :: Int -> ListS a -> ListS a
+takeS = takeAcc NilS
+  where takeAcc acc n list
+          | n <  0 = NilS
+          | n == 0 = acc
+          | otherwise = case list of
+            NilS -> acc
+            _    -> takeAcc (Snoc acc (headS list)) (n-1) (tailS list)
