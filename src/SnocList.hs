@@ -58,12 +58,11 @@ nthElementS n list
 
 -- |deleteNthElementS. This function retrieves the list without its n-th element.
 deleteNthElementS :: Int -> ListS a -> ListS a
+deleteNthElementS n NilS = if n < 0 then error "Invalid index" else NilS
 deleteNthElementS n list
   | n < 0 = error "Invalid index"
   | n == 0 = tailS list
-  | otherwise =  case list of
-      NilS -> NilS
-      _    -> addFirstS (headS list) (deleteNthElementS (n-1) (tailS list))
+  | otherwise = addFirstS (headS list) (deleteNthElementS (n-1) (tailS list))
 
 -- |addFirstS. Given an element 'x' and a list 'xs', this function retrieves the list
 -- 'x:xs'.
