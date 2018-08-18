@@ -11,6 +11,7 @@ module Nat (
   Nat,
   toNat,
   succN,
+  predN,
   toInt
 ) where
 
@@ -33,6 +34,13 @@ succN n = case n of
   (D n') -> O n'
   (O n') -> D (succN n')
 
+-- |predNat. Retrieves the predecessor of a Nat.
+predN :: Nat -> Nat
+predN n = case n of
+  Zero     -> error "zero has no predecessor"
+  (O Zero) -> Zero
+  (O n')   -> D n'
+  (D n')   -> O (predN n')
 
 {- Auxiliary functions -}
 
