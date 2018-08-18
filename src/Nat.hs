@@ -13,6 +13,7 @@ module Nat (
   succN,
   predN,
   addN,
+  prodN,
   toInt
 ) where
 
@@ -48,6 +49,14 @@ addN :: Nat -> Nat -> Nat
 addN n1 Zero = n1
 addN Zero n2 = n2
 addN n1 n2   = succN (n1 `addN` predN n2)
+
+-- |prodN. Retrieves the product of two Nat's.
+prodN :: Nat -> Nat -> Nat
+prodN _ Zero      = Zero
+prodN Zero _      = Zero
+prodN n1 (O Zero) = n1
+prodN (O Zero) n2 = n2
+prodN n1 n2       = (n1 `prodN` predN n2) `addN` n1
 
 {- Auxiliary functions -}
 
