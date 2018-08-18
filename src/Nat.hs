@@ -1,7 +1,7 @@
 {-|
 Module      : Nat
 Description : Natural numbers representation using three useful constructors with a few
-              useful functions built around it.
+              functions built around it.
 License     : MIT
 Author      : Luis Daniel Aragon Bermudez
 Maintainer  : daniel.aragon@ciencias.unam.mx
