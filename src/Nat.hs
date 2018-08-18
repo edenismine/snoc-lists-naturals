@@ -12,6 +12,7 @@ module Nat (
   toNat,
   succN,
   predN,
+  addN,
   toInt
 ) where
 
@@ -27,7 +28,7 @@ toNat n
   | otherwise =
     if n `mod` 2 == 0 then D (toNat (n `quot` 2)) else O (toNat ((n - 1) `quot` 2))
 
--- |succNat. Retrieves the succesor of a Nat.
+-- |succNat. Retrieves the successor of a Nat.
 succN :: Nat -> Nat
 succN n = case n of
   Zero   -> O Zero
@@ -41,6 +42,12 @@ predN n = case n of
   (O Zero) -> Zero
   (O n')   -> D n'
   (D n')   -> O (predN n')
+
+-- |addNat. Retrieves the addition of two Nat's.
+addN :: Nat -> Nat -> Nat
+addN n1 Zero = n1
+addN Zero n2 = n2
+addN n1 n2   = succN (n1 `addN` predN n2)
 
 {- Auxiliary functions -}
 
